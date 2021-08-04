@@ -17,6 +17,7 @@ repositories {
 
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter-web")
+  implementation("org.springframework.boot:spring-boot-starter-logging")
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
   implementation("no.finn.unleash:unleash-client-java:4.4.0")
   implementation("org.jetbrains.kotlin:kotlin-reflect")
