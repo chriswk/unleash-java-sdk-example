@@ -1,6 +1,6 @@
 package io.getunleash
 
-import no.finn.unleash.Unleash
+import io.getunleash.Unleash
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController

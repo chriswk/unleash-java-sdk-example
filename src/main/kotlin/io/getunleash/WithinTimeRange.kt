@@ -1,8 +1,8 @@
 package io.getunleash
 
-import no.finn.unleash.Constraint
-import no.finn.unleash.UnleashContext
-import no.finn.unleash.strategy.Strategy
+import io.getunleash.Constraint
+import io.getunleash.UnleashContext
+import io.getunleash.strategy.Strategy
 import java.time.LocalDateTime
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
