@@ -13,8 +13,4 @@ class FeatureController(val unleashClient: Unleash) {
         return unleashClient.isEnabled(featureName);
     }
 
-    @GetMapping("/daterange")
-    fun checkWithin(): Boolean {
-        return unleashClient.isEnabled("within.time.range");
-    }
 }

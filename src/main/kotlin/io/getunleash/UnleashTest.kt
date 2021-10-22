@@ -19,16 +19,20 @@ class UnleashTest {
     companion object {
         val logger: Logger = LoggerFactory.getLogger(UnleashTest::class.java)
     }
+
     @Bean
     fun unleashConfig(): UnleashConfig {
         return UnleashConfig.builder()
             .appName("unleash-tester")
             .instanceId(UUID.randomUUID().toString())
-            .unleashAPI("https://localhost:4242/api")
-            .customHttpHeader("Authorization", "fancy:default.105edea593f2515b57bbbcbc623024988fd746d03cea5bd70d35f65d")
-            .fetchTogglesInterval(15)
+            .unleashAPI(getEnv("UNLEASH_API_URL", "https://localhost:4242/api"))
+            .customHttpHeader(
+                "Authorization",
+                getEnv("UNLEASH_API_KEY", "fancy:default.105edea593f2515b57bbbcbc623024988fd746d03cea5bd70d35f65d")
+            )
+            .fetchTogglesInterval(5)
             .sendMetricsInterval(60)
-            .subscriber(object: UnleashSubscriber {
+            .subscriber(object : UnleashSubscriber {
                 override fun onReady(unleashReady: UnleashReady) {
                     logger.info("Unleash is ready")
                 }
@@ -48,6 +52,10 @@ class UnleashTest {
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     fun unleash(unleashConfig: UnleashConfig): Unleash {
-        return DefaultUnleash(unleashConfig, WithinTimeRange());
+        return DefaultUnleash(unleashConfig)
+    }
+
+    fun getEnv(envName: String, defaultValue: String): String {
+        return System.getenv(envName) ?: System.getProperty(envName) ?: defaultValue
     }
 }

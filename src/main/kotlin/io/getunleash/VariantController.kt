@@ -11,6 +11,6 @@ class VariantController(val unleashClient: Unleash) {
 
     @GetMapping("/variant/{featureName}")
     fun checkFeature(@PathVariable("featureName") featureName: String): Variant {
-        return unleashClient.getVariant(featureName);
+        return unleashClient.getVariant(featureName)
     }
 }
