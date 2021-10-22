@@ -25,7 +25,7 @@ class UnleashTest {
         return UnleashConfig.builder()
             .appName("unleash-tester")
             .instanceId(UUID.randomUUID().toString())
-            .unleashAPI(getEnv("UNLEASH_API_URL", "https://localhost:4242/api"))
+            .unleashAPI(getEnv("UNLEASH_API_URL", "http://localhost:4242/api"))
             .customHttpHeader(
                 "Authorization",
                 getEnv("UNLEASH_API_KEY", "fancy:default.105edea593f2515b57bbbcbc623024988fd746d03cea5bd70d35f65d")
